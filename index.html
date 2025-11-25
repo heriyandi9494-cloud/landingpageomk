@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selamat Datang - OMK Sekonau</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif;}
+body, html {
+  height:100%; width:100%;
+  display:flex; justify-content:center; align-items:center;
+  background: linear-gradient(to bottom, #4facfe, #00f2fe);
+}
+
+/* ===== Container dengan gradient animasi ===== */
+.welcome-container {
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 90%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: #333;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  background: linear-gradient(270deg, #ffffff, #ffecd2, #d4fc79, #ffffff);
+  background-size: 800% 800%;
+  animation: gradientAnim 15s ease infinite, fadeZoomIn 1s forwards;
+}
+
+@keyframes gradientAnim {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+@keyframes fadeZoomIn {
+  0%{opacity:0; transform: scale(0.9);}
+  100%{opacity:1; transform: scale(1);}
+}
+
+/* ===== Efek tenggelam-timbul huruf ===== */
+.animated-title span {
+  display:inline-block;
+  opacity:0;
+  animation: fadeInOut 2s infinite;
+}
+
+.animated-title span:nth-child(1){animation-delay:0s;}
+.animated-title span:nth-child(2){animation-delay:0.1s;}
+.animated-title span:nth-child(3){animation-delay:0.2s;}
+.animated-title span:nth-child(4){animation-delay:0.3s;}
+.animated-title span:nth-child(5){animation-delay:0.4s;}
+.animated-title span:nth-child(6){animation-delay:0.5s;}
+.animated-title span:nth-child(7){animation-delay:0.6s;}
+.animated-title span:nth-child(8){animation-delay:0.7s;}
+.animated-title span:nth-child(9){animation-delay:0.8s;}
+.animated-title span:nth-child(10){animation-delay:0.9s;}
+/* Tambahkan delay untuk semua huruf sesuai jumlah karakter */
+
+@keyframes fadeInOut {
+  0%,100%{ opacity:0; }
+  50%{ opacity:1; }
+}
+
+/* ===== Paragraf ===== */
+.welcome-container p {
+  font-size:1rem;
+  margin-bottom:25px;
+  line-height:1.5;
+  animation: textFadeIn 1.4s forwards;
+}
+
+@keyframes textFadeIn {0%{opacity:0; transform:translateY(10px);} 100%{opacity:1; transform:translateY(0);}}
+
+/* ===== Tombol bercahaya ===== */
+.enter-button {
+  display:inline-block;
+  padding:15px 30px;
+  font-size:1rem;
+  font-weight:bold;
+  color:#fff;
+  background-color:#4facfe;
+  border:2px solid #4facfe;
+  border-radius:12px;
+  text-decoration:none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.enter-button::before {
+  content:'';
+  position:absolute; top:-50%; left:-50%;
+  width:200%; height:200%;
+  background: radial-gradient(circle, rgba(79,172,254,0.5) 0%, transparent 70%);
+  opacity:0; transition:opacity 0.3s ease; z-index:0;
+}
+
+.enter-button:hover::before { opacity:1; animation: glow 1.5s infinite; }
+@keyframes glow {0%,100%{transform:rotate(0deg) translateX(0);}50%{transform:rotate(180deg) translateX(10px);}}
+
+.enter-button span { position: relative; z-index:1; }
+.enter-button:hover { color:#f44a07; background-color:#fff; border-color:#4facfe; box-shadow:0 0 20px rgba(233, 41, 146, 0.7); }
+
+/* Responsif */
+@media(max-width:480px){
+  .animated-title { font-size:1.5rem; }
+  .welcome-container p{ font-size:0.9rem; }
+  .enter-button{ padding:12px 25px; font-size:0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="welcome-container">
+  <h1 class="animated-title">
+    <!-- Setiap huruf dibungkus <span> untuk efek tenggelam-timbul -->
+    <span>S</span><span>e</span><span>l</span><span>a</span><span>m</span><span>a</span><span>t</span>
+    <span> </span>
+    <span>D</span><span>a</span><span>t</span><span>a</span><span>n</span><span>g</span>
+  </h1>
+  <p>Terima kasih sudah mengunjungi situs OMK St Petrus dan Paulus Rasul Sekonau. Silahkan klik tombol di bawah untuk melihat website kami lebih lanjut.</p>
+  <a href="index.html" class="enter-button"><span>Lanjut ke Website</span></a>
+</div>
+
+</body>
+</html>
