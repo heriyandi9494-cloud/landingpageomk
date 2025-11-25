@@ -3,48 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Selamat Datang - OMK Sekonau</title>
+<title>Landing Page OMK Sekonau</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif;}
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+
 body, html {
-  height:100%; width:100%;
-  display:flex; justify-content:center; align-items:center;
-  background: linear-gradient(to bottom, #4facfe, #00f2fe);
+  height:100%;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(to right, #59a7e8, #161718);
 }
 
-/* ===== Container dengan gradient animasi ===== */
-.welcome-container {
-  padding: 30px;
+/* Kontainer utama dengan hover bercahaya */
+.landing-container {
+  display:flex;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
-  max-width: 90%;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  color: #333;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  background: linear-gradient(270deg, #ffffff, #ffecd2, #d4fc79, #ffffff);
-  background-size: 800% 800%;
-  animation: gradientAnim 15s ease infinite, fadeZoomIn 1s forwards;
+  overflow:hidden;
+  max-width:900px;
+  width:90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: all 0.4s ease;
 }
 
-@keyframes gradientAnim {
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+.landing-container:hover {
+  box-shadow: 0 0 40px 10px rgba(79,172,254,0.7);
+  transform: translateY(-5px);
 }
 
-@keyframes fadeZoomIn {
-  0%{opacity:0; transform: scale(0.9);}
-  100%{opacity:1; transform: scale(1);}
+/* Kolom kiri */
+.left-column {
+  flex:1;
+  padding:40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  color:#fff;
 }
 
-/* ===== Efek tenggelam-timbul huruf ===== */
+/* Judul animasi tenggelam-timbul */
+.animated-title {
+  font-size:2rem;
+  margin-bottom:20px;
+  display:flex;
+  flex-wrap:wrap;
+  line-height:1.2;
+}
+
 .animated-title span {
   display:inline-block;
   opacity:0;
-  animation: fadeInOut 2s infinite;
+  transform: translateY(10px);
+  animation: fadeInUp 1s forwards;
 }
 
+@keyframes fadeInUp {
+  0% { opacity:0; transform: translateY(10px); }
+  50% { opacity:1; transform: translateY(-5px); }
+  100% { opacity:1; transform: translateY(0); }
+}
+
+/* Delay huruf satu per satu */
 .animated-title span:nth-child(1){animation-delay:0s;}
 .animated-title span:nth-child(2){animation-delay:0.1s;}
 .animated-title span:nth-child(3){animation-delay:0.2s;}
@@ -55,27 +77,33 @@ body, html {
 .animated-title span:nth-child(8){animation-delay:0.7s;}
 .animated-title span:nth-child(9){animation-delay:0.8s;}
 .animated-title span:nth-child(10){animation-delay:0.9s;}
-/* Tambahkan delay untuk semua huruf sesuai jumlah karakter */
+.animated-title span:nth-child(11){animation-delay:1s;}
+.animated-title span:nth-child(12){animation-delay:1.1s;}
+.animated-title span:nth-child(13){animation-delay:1.2s;}
+.animated-title span:nth-child(14){animation-delay:1.3s;}
+.animated-title span:nth-child(15){animation-delay:1.4s;}
+.animated-title span:nth-child(16){animation-delay:1.5s;}
+.animated-title span:nth-child(17){animation-delay:1.6s;}
+.animated-title span:nth-child(18){animation-delay:1.7s;}
+.animated-title span:nth-child(19){animation-delay:1.8s;}
+.animated-title span:nth-child(20){animation-delay:1.9s;}
+.animated-title span:nth-child(21){animation-delay:2s;}
+.animated-title span:nth-child(22){animation-delay:2.1s;}
+.animated-title span:nth-child(23){animation-delay:2.2s;}
+.animated-title span:nth-child(24){animation-delay:2.3s;}
+.animated-title span:nth-child(25){animation-delay:2.4s;}
 
-@keyframes fadeInOut {
-  0%,100%{ opacity:0; }
-  50%{ opacity:1; }
-}
-
-/* ===== Paragraf ===== */
-.welcome-container p {
+/* Paragraf dan tombol */
+.left-column p {
   font-size:1rem;
-  margin-bottom:25px;
+  margin-bottom:30px;
   line-height:1.5;
-  animation: textFadeIn 1.4s forwards;
+  color: rgba(255,255,255,0.9);
 }
 
-@keyframes textFadeIn {0%{opacity:0; transform:translateY(10px);} 100%{opacity:1; transform:translateY(0);}}
-
-/* ===== Tombol bercahaya ===== */
 .enter-button {
   display:inline-block;
-  padding:15px 30px;
+  padding:15px 35px;
   font-size:1rem;
   font-weight:bold;
   color:#fff;
@@ -84,43 +112,66 @@ body, html {
   border-radius:12px;
   text-decoration:none;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 
-.enter-button::before {
-  content:'';
-  position:absolute; top:-50%; left:-50%;
-  width:200%; height:200%;
-  background: radial-gradient(circle, rgba(79,172,254,0.5) 0%, transparent 70%);
-  opacity:0; transition:opacity 0.3s ease; z-index:0;
+.enter-button:hover {
+  background-color:#fff;
+  color:#4facfe;
+  box-shadow: 0 0 20px rgba(79,172,254,0.7);
 }
 
-.enter-button:hover::before { opacity:1; animation: glow 1.5s infinite; }
-@keyframes glow {0%,100%{transform:rotate(0deg) translateX(0);}50%{transform:rotate(180deg) translateX(10px);}}
+/* Kolom kanan */
+.right-column {
+  flex:1;
+  background: url('https://i.postimg.cc/8CXvhcbS/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001.jpg') center/cover no-repeat;
+  min-height:300px;
+}
 
-.enter-button span { position: relative; z-index:1; }
-.enter-button:hover { color:#f44a07; background-color:#fff; border-color:#4facfe; box-shadow:0 0 20px rgba(233, 41, 146, 0.7); }
-
-/* Responsif */
-@media(max-width:480px){
-  .animated-title { font-size:1.5rem; }
-  .welcome-container p{ font-size:0.9rem; }
-  .enter-button{ padding:12px 25px; font-size:0.9rem; }
+/* Responsif HP */
+@media(max-width:768px){
+  .landing-container {
+    flex-direction:column-reverse;
+    border-radius:15px;
+  }
+  .left-column {
+    padding:20px;
+    text-align:center;
+  }
+  .left-column h1 {
+    font-size:1.6rem;
+  }
+  .left-column p {
+    font-size:0.95rem;
+  }
+  .enter-button {
+    padding:12px 25px;
+    font-size:0.95rem;
+  }
+  .right-column {
+    min-height:250px;
+  }
 }
 </style>
 </head>
 <body>
 
-<div class="welcome-container">
-  <h1 class="animated-title">
-    <!-- Setiap huruf dibungkus <span> untuk efek tenggelam-timbul -->
-    <span>S</span><span>e</span><span>l</span><span>a</span><span>m</span><span>a</span><span>t</span>
-    <span> </span>
-    <span>D</span><span>a</span><span>t</span><span>a</span><span>n</span><span>g</span>
-  </h1>
-  <p>Terima kasih sudah mengunjungi situs OMK St Petrus dan Paulus Rasul Sekonau. Silahkan klik tombol di bawah untuk melihat website kami lebih lanjut.</p>
-  <a href="https://heriyandi9494-cloud.github.io/muda-mudi-sekonau/" class="enter-button" target="_blank" rel="noopener noreferrer"><span>Lanjut ke Website</span></a>
+<div class="landing-container">
+  <div class="left-column">
+    <h1 class="animated-title">
+      <span>S</span><span>e</span><span>l</span><span>a</span><span>m</span><span>a</span><span>t</span>
+      <span> </span>
+      <span>D</span><span>a</span><span>t</span><span>a</span><span>n</span><span>g</span>
+      <span> </span>
+      <span>d</span><span>i</span>
+      <span> </span>
+      <span>O</span><span>M</span><span>K</span>
+      <span> </span>
+      <span>S</span><span>e</span><span>k</span><span>o</span><span>n</span><span>a</span><span>u</span>
+    </h1>
+    <p>𝘛𝘦𝘳𝘪𝘮𝘢 𝘬𝘢𝘴𝘪𝘩 𝘵𝘦𝘭𝘢𝘩 𝘮𝘦𝘯𝘨𝘶𝘯𝘫𝘶𝘯𝘨𝘪 𝘴𝘪𝘵𝘶𝘴 𝘖𝘔𝘒 𝘚𝘵 𝘗𝘦𝘵𝘳𝘶𝘴 𝘥𝘢𝘯 𝘗𝘢𝘶𝘭𝘶𝘴 𝘙𝘢𝘴𝘶𝘭 𝘚𝘦𝘬𝘰𝘯𝘢𝘶. 𝘒𝘭𝘪𝘬 𝘵𝘰𝘮𝘣𝘰𝘭 𝘥𝘪 𝘣𝘢𝘸𝘢𝘩 𝘶𝘯𝘵𝘶𝘬 𝘮𝘦𝘯𝘫𝘦𝘭𝘢𝘫𝘢𝘩𝘪 𝘸𝘦𝘣𝘴𝘪𝘵𝘦 𝘬𝘢𝘮𝘪 𝘭𝘦𝘣𝘪𝘩 𝘭𝘢𝘯𝘫𝘶𝘵.</p>
+    <a href="https://heriyandi9494-cloud.github.io/muda-mudi-sekonau/" class="enter-button" target="_blank" rel="noopener noreferrer">𝙇𝙖𝙣𝙟𝙪𝙩 𝙠𝙚 𝙒𝙚𝙗𝙨𝙞𝙩𝙚</a>
+  </div>
+  <div class="right-column"></div>
 </div>
 
 </body>
